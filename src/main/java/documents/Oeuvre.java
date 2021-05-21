@@ -19,4 +19,19 @@ public class Oeuvre extends EntiteAbstraite {
     private List<String> formations;
     private String contenu;
     private List<String> roles;
+
+    @Override
+    public String toString() {
+        return "Oeuvre{" +
+                "titre='" + titre + '\'' +
+                ", auteurs=" + auteurs +
+                ", pages=" + pages +
+                ", publication=" + publication +
+                ", theme='" + theme + '\'' +
+                ", universites=" + universites +
+                ", formations=" + formations +
+                ", contenu='" + contenu + '\'' +
+                ", roles=" + roles +
+                '}';
+    }
 }

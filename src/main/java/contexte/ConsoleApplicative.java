@@ -23,7 +23,9 @@ public class ConsoleApplicative {
         }
     }
 
-    public static void afficherLeMenu() {
-        System.out.println();
+    public static int afficherLeMenu() {
+        System.out.println("Pour chercher un oeuvre tapper 0");
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextInt();
     }
 }

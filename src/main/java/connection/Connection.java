@@ -1,5 +1,6 @@
 package connection;
 
+import com.mongodb.AutoEncryptionSettings;
 import com.mongodb.ConnectionString;
 import com.mongodb.MongoClientSettings;
 import com.mongodb.client.MongoClient;
