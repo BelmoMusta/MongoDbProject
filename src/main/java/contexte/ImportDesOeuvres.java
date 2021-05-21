@@ -1,6 +1,7 @@
 package contexte;
 
 import documents.Oeuvre;
+import filters.OeuvreFilterFilter;
 import query.OeuvreQuery;
 
 import java.io.BufferedReader;
@@ -28,7 +29,6 @@ public class ImportDesOeuvres {
     public static final String DOSSIER_IMPORT = "import";
 
     public static void importOeuvres() {
-        // ne pas importer les oeuvres deja importés
         final List<Oeuvre> listeOeuvres;
         try {
             listeOeuvres = Files.walk(Paths.get(DOSSIER_IMPORT))
@@ -40,10 +40,20 @@ public class ImportDesOeuvres {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        OeuvreQuery oeuvreQuery = new OeuvreQuery();
+        final OeuvreQuery oeuvreQuery = new OeuvreQuery();
         for (Oeuvre listeOeuvre : listeOeuvres) {
-            oeuvreQuery.insert(listeOeuvre);
+            if (!oeuvreExisteDeja(listeOeuvre)) {
+                oeuvreQuery.insert(listeOeuvre);
+            } else {
+                System.out.println("L'oeuvre '" + listeOeuvre.getTitre() + "' existe déjà");
+            }
         }
+    }
+
+    private static boolean oeuvreExisteDeja(Oeuvre listeOeuvre) {
+        OeuvreQuery oeuvreQuery = new OeuvreQuery();
+        Oeuvre oeuvre = oeuvreQuery.find(OeuvreFilterFilter.oeuvre(listeOeuvre.getTitre()));
+        return oeuvre != null;
     }
 
     public static void main(String[] args) throws Exception {
