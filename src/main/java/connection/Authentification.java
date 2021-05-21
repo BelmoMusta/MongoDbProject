@@ -28,12 +28,7 @@ public class Authentification {
     }
 
     public static boolean exisiteUserConnecte() {
-        return getUtilisateurConnecte() != null;
+        return ContextApplicatif.UTILISATEUR_CONNECTE != null;
     }
-
-    public static Utilisateur getUtilisateurConnecte() {
-        return ContextApplicatif.UTILISATEUR_CONNECTE;
-    }
-
 
 }
