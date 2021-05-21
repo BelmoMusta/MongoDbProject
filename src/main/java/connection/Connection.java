@@ -4,9 +4,7 @@ import com.mongodb.ConnectionString;
 import com.mongodb.MongoClientSettings;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
-import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
-import documents.Utilisateur;
 import org.bson.codecs.configuration.CodecRegistries;
 import org.bson.codecs.configuration.CodecRegistry;
 import org.bson.codecs.pojo.PojoCodecProvider;
@@ -16,12 +14,7 @@ public class Connection {
     public static final String DATABASE_NAME = "oeuvres_universitaires";
     private static MongoDatabase DATABASE;
 
-    public static void main(String[] args) {
-        Authentification.authentifier("test","test");
-
-    }
-
-    public static MongoDatabase connectToDabase() {
+    public static MongoDatabase connectToDataBase() {
         if (DATABASE == null) {
             final ConnectionString connString = new ConnectionString(CONNECTION_STRING);
             final CodecRegistry pojoCodecRegistry = CodecRegistries.fromRegistries(MongoClientSettings.getDefaultCodecRegistry(),
