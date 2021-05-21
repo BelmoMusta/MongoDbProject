@@ -24,7 +24,8 @@ public class ConsoleApplicative {
     }
 
     public static int afficherLeMenu() {
-        System.out.println("Pour chercher un oeuvre tapper 0");
+        System.out.println("Pour chercher une oeuvre taper 0");
+        System.out.println("Pour insérer une oeuvre taper 1");
         Scanner scanner = new Scanner(System.in);
         return scanner.nextInt();
     }
