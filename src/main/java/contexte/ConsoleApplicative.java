@@ -24,7 +24,14 @@ public class ConsoleApplicative {
     }
 
     public static int afficherLeMenu() {
-        System.out.println("Pour chercher un oeuvre tapper 0");
+        System.out.println("____________________________________________");
+        System.out.println("- Pour chercher une oeuvre par titre taper 1");
+        System.out.println("- Pour chercher une oeuvre par thématique taper 2");
+        System.out.println("- Pour chercher une oeuvre par mot dans le contenu taper 3");
+        System.out.println("- Pour sourtir de l'application taper 0");
+        System.out.println("____________________________________________");
+        System.out.print("Choix : ");
+
         Scanner scanner = new Scanner(System.in);
         return scanner.nextInt();
     }

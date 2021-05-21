@@ -51,8 +51,10 @@ public class ImportDesOeuvres {
     }
 
     private static boolean oeuvreExisteDeja(Oeuvre listeOeuvre) {
+        // une oeuvre existe deja si son titre et sa date de publication sont sur la base mongodb
         OeuvreQuery oeuvreQuery = new OeuvreQuery();
-        Oeuvre oeuvre = oeuvreQuery.find(OeuvreFilterFilter.oeuvre(listeOeuvre.getTitre()));
+        Oeuvre oeuvre = oeuvreQuery.find(OeuvreFilterFilter.oeuvreParTitreEtDatePublication(
+                listeOeuvre.getTitre(), listeOeuvre.getPublication()));
         return oeuvre != null;
     }
 

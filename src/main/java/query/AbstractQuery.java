@@ -7,6 +7,9 @@ import com.mongodb.client.MongoDatabase;
 import connection.Connection;
 import org.bson.conversions.Bson;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class AbstractQuery<T> {
 
     public MongoCollection<T> getCollection() {
@@ -28,6 +31,18 @@ public abstract class AbstractQuery<T> {
             return cursor.next();
         }
         return null;
+
+    }
+
+    public List<T> findAllThatMatch(Bson bson) {
+        MongoCollection<T> collection = getCollection();
+        FindIterable<T> ts = collection.find(bson);
+        List<T> list = new ArrayList<>();
+        MongoCursor<T> cursor = ts.cursor();
+        if (cursor.hasNext()) {
+            list.add(cursor.next());
+        }
+        return list;
 
     }
 
