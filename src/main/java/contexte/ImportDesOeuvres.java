@@ -58,10 +58,6 @@ public class ImportDesOeuvres {
         return oeuvre != null;
     }
 
-    public static void main(String[] args) throws Exception {
-        importOeuvres();
-
-    }
 
     public static Oeuvre construireOeuvre(String contenuFichier) {
 
